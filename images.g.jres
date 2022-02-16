@@ -1,0 +1,27 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAA//8P8FVVD/BVVfXwVVUP8FVV9fBVVQ/wVVX1AP//AP9VVfX/D///9VVV9VX1VVVV//9fVfVVVVX1AF9V9VVVVfUAX1X1VVVV9QD///9VVf8P8FVV9f//VQ/wVVX1AAD/APBVVfUAAAAA8FVV9QAAAPD/VVX1AAAAX1X//w8AAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "coins"
+    },
+    "image2": {
+        "data": "hwQQABAAAACwEREbERGxEbC7u7u7u7u7sP//+///v/+w///7v7W//7C7u7u7u7u7sP//+7+7v/+w///7//+//7C7u7u7u7u7sP//+///v/+w///7//+//7C7u7u7u7u7sP//+///v/+w///7//+//7C7u7u7u7u7sBERGxERsREAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "purple jail cell"
+    },
+    "image3": {
+        "data": "hwQQABAAAAC7u7u7u7u7u7u7u7u7u7u7u7u7u//19fW7u7v7/19fX7u7u/////X1u7v7////X1+7u/v/////9bu7+/////9fu7v7//////W7u/v///9fX7u7+/////X1u7u7////X1+7u7v7////9bu7u7v//19fu7u7u7u7u7u7u7u7u7u7uw==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "gold mine"
+    },
+    "image4": {
+        "data": "hwQZABkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJkJAAAAAAAAAAAAAAAAkJlmlpkAAAAAAAAAAAAAAGlmZmZmCQAAAAAAAAAAAJlmZmZmZpYAAAAAAAAAAABmZmZmZmZmmQAAAAAAAJkJZmZmZmZmZmYAAAAAAJlmlmZmZmZmZmZmCQAAAABmZmZmZmZmZmZmZgYAAAAAZmZmZmZmZmZmZmYGAAAAAGZmZmZmZmZmZmZmBgAAAACIZoZmZmZmZmZmZggAAAAAgIgIZmZmZmZmZmYAAAAAAAAAAGZmZmZmZmaIAAAAAAAAAACIZmZmZmaGAAAAAAAAAAAAAGhmZmZmCAAAAAAAAAAAAACAiGaGiAAAAAAAAAAAAAAAAACICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "moving piece"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
