@@ -1,14 +1,62 @@
-function placementOfRewards (num: number) {
-    for (let index = 0; index < num; index++) {
-        for (let index = 0; index <= randint(0, 4); index++) {
-            outcomes.setImage(outcomeImages[index])
-            tiles.placeOnRandomTile(outcomes, assets.tile`transparency16`)
-        }
+function doSomething () {
+    outcomes.setImage(outcomeImages)
+    if (outcomes == outcomeImages[0]) {
+    	
+    } else {
+    	
     }
 }
-let outcomeImages: Image[] = []
+function placementOfRewards (num: number) {
+    score = num
+    outcomes.setImage(outcomeImages._pickRandom())
+    rollTheDice()
+    if (movingPiece.overlapsWith(outcomes)) {
+    	
+    }
+}
+function rollTheDice () {
+    score = game.askForNumber("", 2)
+    if (score == 9) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile14`)
+    } else if (score == 8) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile13`)
+    } else if (score == 7) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile12`)
+    } else if (score == 6) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile5`)
+    } else if (score == 5) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile6`)
+    } else if (score == 4) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile16`)
+    } else if (score == 3) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile9`)
+    } else if (score == 2) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile15`)
+    } else if (score == 1) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile0`)
+    } else if (score == 10) {
+        tiles.placeOnRandomTile(outcomes, assets.tile`myTile8`)
+    } else {
+        game.splash("over limit. try again ;(")
+    }
+}
+let score = 0
+let movingPiece: Sprite = null
+let outcomeImages: Image = null
 let outcomes: Sprite = null
 tiles.setTilemap(tilemap`level1`)
+let diceScore = [
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11
+]
 outcomes = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -137,16 +185,38 @@ let tileBlocks = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-tileBlocks.setImage(assets.tile`transparency16`)
+tileBlocks.setImage(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `)
 let tilePlacements = [
 myTiles.tile2,
 myTiles.tile11,
 myTiles.tile8,
 myTiles.tile10,
-myTiles.tile7
+myTiles.tile7,
+myTiles.tile13,
+myTiles.tile19,
+myTiles.tile18,
+myTiles.tile16,
+myTiles.tile15
 ]
-let movingPiece = sprites.create(assets.image`moving piece`, SpriteKind.Player)
+movingPiece = sprites.create(assets.image`moving piece`, SpriteKind.Player)
 movingPiece.setPosition(56, 62)
 controller.moveSprite(movingPiece)
 scene.cameraFollowSprite(movingPiece)
-placementOfRewards(5)
+placementOfRewards(score)
