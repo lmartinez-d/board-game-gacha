@@ -1,5 +1,5 @@
 {
-    "name": "board game gacha - Copy",
+    "name": "board game gacha  #2",
     "description": "",
     "dependencies": {
         "device": "*"
@@ -18,7 +18,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.8.20",
+        "target": "1.8.22",
         "targetId": "arcade"
     },
     "supportedTargets": [

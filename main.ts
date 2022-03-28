@@ -1,62 +1,84 @@
-function doSomething () {
-    outcomes.setImage(outcomeImages)
-    if (outcomes == outcomeImages[0]) {
-    	
+function checkPlacement () {
+    tilePlacements.push(myTiles.tile2)
+    tilePlacements.push(myTiles.tile18)
+    tilePlacements.push(myTiles.tile11)
+    tilePlacements.push(myTiles.tile19)
+    tilePlacements.push(myTiles.tile8)
+    tilePlacements.push(myTiles.tile7)
+    tilePlacements.push(myTiles.tile15)
+    tilePlacements.push(myTiles.tile16)
+    tilePlacements.push(myTiles.tile17)
+    tilePlacements.push(myTiles.tile10)
+}
+function AfterFirstRoll (num: number) {
+    pause(5000)
+    giveReward()
+    rollAfter1 = game.askForNumber("", 2)
+    outcomes.setImage(outcomeImages[randomNum])
+    if (rollAfter1 <= 10) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[diceRoll - 1 + rollAfter1])
     } else {
-    	
+        game.splash("Over Limit! Try Again!")
     }
 }
-function placementOfRewards (num: number) {
-    score = num
-    outcomes.setImage(outcomeImages._pickRandom())
-    rollTheDice()
+function giveReward () {
+    strikes = 0
+    info.setScore(0)
     if (movingPiece.overlapsWith(outcomes)) {
-    	
+        if (randomNum == 0) {
+            strikes += 2
+        } else if (randomNum == 1) {
+            info.changeScoreBy(1)
+        } else if (randomNum == 2) {
+            strikes += 1
+        } else {
+            info.changeScoreBy(2)
+        }
+        game.splash("you have" + strikes + "strikes")
+        game.splash("you have" + info.score() + "lives")
     }
 }
-function rollTheDice () {
-    score = game.askForNumber("", 2)
-    if (score == 9) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile14`)
-    } else if (score == 8) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile13`)
-    } else if (score == 7) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile12`)
-    } else if (score == 6) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile5`)
-    } else if (score == 5) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile6`)
-    } else if (score == 4) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile16`)
-    } else if (score == 3) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile9`)
-    } else if (score == 2) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile15`)
-    } else if (score == 1) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile0`)
-    } else if (score == 10) {
-        tiles.placeOnRandomTile(outcomes, assets.tile`myTile8`)
+function rewardAppears (num: number) {
+    diceRoll = game.askForNumber("", 2)
+    randomNum = randint(0, 4)
+    giveReward()
+    outcomes.setImage(outcomeImages[randomNum])
+    if (diceRoll == 1) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[0])
+    } else if (diceRoll == 2) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[1])
+    } else if (diceRoll == 3) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[2])
+    } else if (diceRoll == 4) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[3])
+    } else if (diceRoll == 5) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[4])
+    } else if (diceRoll == 6) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[5])
+    } else if (diceRoll == 7) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[6])
+    } else if (diceRoll == 8) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[7])
+    } else if (diceRoll == 9) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[8])
+    } else if (diceRoll == 10) {
+        tiles.placeOnRandomTile(outcomes, tilePlacements[9])
     } else {
-        game.splash("over limit. try again ;(")
+        game.splash("Over limit! Try again!")
+        outcomes.destroy()
     }
+    checkPlacement()
+    AfterFirstRoll(rollAfter1)
 }
-let score = 0
+let strikes = 0
+let randomNum = 0
+let rollAfter1 = 0
+let diceRoll = 0
 let movingPiece: Sprite = null
-let outcomeImages: Image = null
+let tilePlacements: Image[] = []
+let outcomeImages: Image[] = []
 let outcomes: Sprite = null
 tiles.setTilemap(tilemap`level1`)
-let diceScore = [
-2,
-3,
-4,
-5,
-6,
-7,
-8,
-9,
-10,
-11
-]
 outcomes = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -185,38 +207,21 @@ let tileBlocks = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-tileBlocks.setImage(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `)
-let tilePlacements = [
+tileBlocks.setImage(assets.tile`transparency16`)
+tilePlacements = [
 myTiles.tile2,
-myTiles.tile11,
-myTiles.tile8,
-myTiles.tile10,
-myTiles.tile7,
-myTiles.tile13,
-myTiles.tile19,
 myTiles.tile18,
+myTiles.tile11,
+myTiles.tile19,
+myTiles.tile8,
+myTiles.tile7,
+myTiles.tile15,
 myTiles.tile16,
-myTiles.tile15
+myTiles.tile17,
+myTiles.tile10
 ]
 movingPiece = sprites.create(assets.image`moving piece`, SpriteKind.Player)
 movingPiece.setPosition(56, 62)
 controller.moveSprite(movingPiece)
 scene.cameraFollowSprite(movingPiece)
-placementOfRewards(score)
+rewardAppears(diceRoll)
